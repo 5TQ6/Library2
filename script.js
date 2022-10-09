@@ -1,6 +1,7 @@
 let myLibrary = [];
 
- const booksGrid = document.getElementById('booksGrid')
+const booksGrid = document.getElementById('booksGrid')
+const formDiv = document.getElementById('add-book-div')
 
 //object constructor
 function Book(title, author, pages, isRead) {
@@ -57,7 +58,6 @@ function createBookCard(book) {
         {readBtn.textContent = 'Not read'
          readBtn.classList.add('btn-light-red')
         }
-    
 
     bookCard.appendChild(title)
     bookCard.appendChild(author)
@@ -67,5 +67,20 @@ function createBookCard(book) {
     booksGrid.appendChild(bookCard)
 }
 
+function showForm() {
+    formDiv.classList.toggle('unhide');
+}
+
 addBookToLibrary('hema','me',134, false);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
+addBookToLibrary('hema','me',134, true);
 addBookToLibrary('hema','me',134, true);
