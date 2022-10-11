@@ -32,17 +32,24 @@ button,
 input {
 border: none;
 color: inherit;
-font-family: inherit;
+font-family: 'Courier New', Courier, monospace;
 font-size: inherit;
 font-weight: inherit;
+padding: 5px;
+border-radius: 10px;
 cursor: pointer;
 outline: none;
 background-color: var(--grey);
 }
+button,
+input[type='text'],
+input[type='number'] {
+box-shadow: 3px 3px 2px black;
+}
 
 input[type='text'],
 input[type='number'] {
-  cursor: text;
+    cursor: text;
 }
 
 .book-card {
@@ -99,17 +106,31 @@ input[type='number'] {
   }
 
   #add-book {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: .3fr .7fr;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
     align-items: center;
     justify-content: center;
+    margin: 20px;
   }
+
+.addBtn {
+    margin-top: 20px;
+}
 
   .unhide {
     scale: 1;
   }
 
+  .form-control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    margin-top: 10px;
+  }
   div {
     border: 2px black solid;
     background-color: #fffbfb;

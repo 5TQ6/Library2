@@ -50,12 +50,17 @@ function createBookCard(book) {
     pages.textContent = `${book.pages} pages`
     removeBtn.textContent = 'Remove'
 
+    removeBtn.addEventListener('click', () => {
+        
+    })
+
     if (book.isRead) {
         readBtn.textContent = 'Read'
         readBtn.classList.add('btn-light-green')
     }
     else 
-        {readBtn.textContent = 'Not read'
+        {
+         readBtn.textContent = 'Not read'
          readBtn.classList.add('btn-light-red')
         }
 
@@ -71,16 +76,23 @@ function showForm() {
     formDiv.classList.toggle('unhide');
 }
 
-addBookToLibrary('hema','me',134, false);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
-addBookToLibrary('hema','me',134, true);
+function getFormData() {
+    let Title = document.getElementById('Title').value;
+    let Author = document.getElementById('Author').value;
+    let Pages = document.getElementById('Pages').value;
+    let Read = document.getElementById('Read').value;
+
+    if ((Title == "") || (Author == "") || (Pages == "") || (Read == ""))
+    {
+        return;
+    }
+
+    addBookToLibrary(Title,Author,Pages,Read)
+
+    clearForm();
+}
+
+function clearForm() {
+    document.getElementById("add-book").reset();
+}
+

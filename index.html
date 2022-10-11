@@ -23,25 +23,27 @@
             <div class="add-book-div" id="add-book-div">
                 <form id="add-book">
 
-                    <label for="Title">Title: 
+                    <label for="Title">Title: </label>
                         <input type="text" id="Title" name="Title">
-                    </label>
                     
-                    <label for="Author">Author: 
+                    
+                    <label for="Author">Author: </label>
                     <input type="text" id="Author" name="Author">
-                    </label>
+                    
 
-                    <label for="Pages">Pages: 
+                    <label for="Pages">Pages: </label>
                     <input type="number" id="Pages" name="Pages">
-                    </label>
+                    
 
-                    <label for="Read">Did you read it? 
+                    <label for="Read">Did you read it? </label>
                     <input type="checkbox" id="Read" name="Read">
-                    </label>
+                    
 
                 </form>
-                <button type="submit" class="submit-button">Submit To library</button>
-                <button type="reset" class="reset-button">Reset Form</button>
+                <div class="form-control-buttons">
+                    <button type="submit" class="submit-button" onclick="getFormData()">Submit To library</button>
+                    <button type="reset" class="reset-button" onclick="clearForm()">Reset Form</button>
+                </div>
             </div>
         </div>
 
