@@ -1,8 +1,8 @@
 let myLibrary = [];
+let index = 0;
 
 const booksGrid = document.getElementById('booksGrid')
 const formDiv = document.getElementById('add-book-div')
-
 //object constructor
 function Book(title, author, pages, isRead) {
     this.title = title;
@@ -42,17 +42,18 @@ function createBookCard(book) {
     bookCard.classList.add('book-card')
     readBtn.classList.add('button')
     removeBtn.classList.add('button')
-    //readBtn.onclick = toggleRead
-    //removeBtn.onclick = removeBook
+    readBtn.addEventListener('click', toggleRead)
+    removeBtn.addEventListener('click', removeBook)
 
     title.textContent = `"${book.title}"`
     author.textContent = book.author
     pages.textContent = `${book.pages} pages`
     removeBtn.textContent = 'Remove'
 
-    removeBtn.addEventListener('click', () => {
-        
-    })
+    removeBtn.value = index;
+    index++;
+
+    
 
     if (book.isRead) {
         readBtn.textContent = 'Read'
@@ -72,17 +73,39 @@ function createBookCard(book) {
     booksGrid.appendChild(bookCard)
 }
 
+//remove the book from the array and update the grid
+function removeBook(removeBtn) {
+    let retrieveBookToRemove = removeBtn.value;
+    myLibrary.splice(parseInt(retrieveBookToRemove),1)
+    index--;
+    arrayItems();
+}
+
+function toggleRead() {
+    if(this.textContent == 'Read')
+    {
+        this.textContent = 'Not read'
+        this.classList.replace('btn-light-green','btn-light-red')
+    }
+    else 
+    {
+        this.textContent = 'Read'
+        this.classList.replace('btn-light-red', 'btn-light-green')
+    }
+}
+
 function showForm() {
     formDiv.classList.toggle('unhide');
 }
 
+//Read the data input from the user and display it
 function getFormData() {
     let Title = document.getElementById('Title').value;
     let Author = document.getElementById('Author').value;
     let Pages = document.getElementById('Pages').value;
-    let Read = document.getElementById('Read').value;
+    let Read = document.getElementById('Read').checked;
 
-    if ((Title == "") || (Author == "") || (Pages == "") || (Read == ""))
+    if ((Title == "") || (Author == "") || (Pages == "") || (Read === ""))
     {
         return;
     }
@@ -92,6 +115,7 @@ function getFormData() {
     clearForm();
 }
 
+//Clears the form inputs
 function clearForm() {
     document.getElementById("add-book").reset();
 }
